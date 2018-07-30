@@ -1,24 +1,11 @@
-# README
+# exerciseTracker
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This simple web application helps users keep track of daily/ weekly exercises done.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Set up exercises for the week based on body parts
+Check them off as you complete each one
+Helps avoid repeating same exercises for body parts
+Helps avoid the everlasting philosophical questions of:
+"Have I done this exercise this week?"
+"How many times have I worked body part X?"
+"What is my focus this week?"
