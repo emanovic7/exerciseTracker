@@ -9,4 +9,4 @@ Helps avoid the everlasting philosophical questions of:
 
 * "Have I done this exercise this week?"
 * "How many times have I worked body part X?"
-*"What is my focus this week?"
+* "What is my focus this week?"
