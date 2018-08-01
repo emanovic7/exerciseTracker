@@ -1,4 +1,6 @@
 This is the user's home page
 
 <br></br>
-Welcome: <%= @user.email %>
+<p> Welcome: <%= @user.email %> </p>
+
+<p><%= link_to "Add Workout", :controller => 'workouts', :action => 'new' %> </p>

@@ -1,0 +1,15 @@
+Workout: </br>
+<%= @workout.name %>
+
+<br></br>
+For: </br>
+<%= @workout.body_part %>
+
+<br></br>
+Description: </br>
+<%= @workout.description %>
+
+<br></br>
+<%= link_to "Edit Workout", edit_workout_path(@workout)%>
+<br></br>
+Created by: <%= link_to "User", user_path(@workout.user) %>

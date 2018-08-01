@@ -11,15 +11,15 @@ class WorkoutsController < ApplicationController
     end
 
     def new
-      if logged_in? && @user = current_user
+      #if logged_in? && @user = current_user
         @workout = Workout.new
-      else
-        redirect_to signin_path
-      end
+      #else
+        #redirect_to new_user_session_path
+      #end
     end
 
     def create
-      if logged_in? && @user = current_user
+      if @user = current_user
         @workout = Workout.new(workout_params)
         @workout.user = current_user
           if @workout.save
