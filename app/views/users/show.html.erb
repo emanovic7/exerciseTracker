@@ -1,6 +1,21 @@
-This is the user's home page
 
-<br></br>
-<p> Welcome: <%= @user.email %> </p>
 
-<p><%= link_to "Add Workout", :controller => 'workouts', :action => 'new' %> </p>
+<div align="center">
+
+  <div class="info">
+
+    <p><strong>Username:</strong> <%= @user.user_name %></p>
+
+        <% if @user.workouts.count == 0 %>
+          <p>You have no workouts planned this week.
+          <%= link_to "Add Workout", :controller => 'workouts', :action => 'new' %> </p>
+        <% else %>
+        <p><strong>Workouts This week:</strong> <%= @user.workouts.count %></p>
+        <p>You have <%= link_to 'Workouts', workouts_path %> this week</p>
+        <p><strong>Exercises:</strong>  <%= @user.exercises.count %></p>
+        <% end %>
+
+    <p><%= link_to 'Edit', edit_user_path(@user) %></p>
+
+  </div>
+</div>

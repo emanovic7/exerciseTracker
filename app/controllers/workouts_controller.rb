@@ -1,13 +1,16 @@
 class WorkoutsController < ApplicationController
   before_action :set_workout, only: [:show, :edit, :update, :destroy]
 
+    def show
+      @workout = Workout.find(params[:id])
+    end
 
     def index
-      if logged_in? && @user == current_user
+      #if @user == current_user
         @workouts = Workout.all
-      else
-        redirect_to signin_path
-      end
+      #else
+      #  redirect_to new_user_session_path
+    #  end
     end
 
     def new
@@ -19,18 +22,18 @@ class WorkoutsController < ApplicationController
     end
 
     def create
-      if @user = current_user
+      #if @user = current_user
         @workout = Workout.new(workout_params)
-        @workout.user = current_user
+        #@workout.user = current_user
           if @workout.save
             session[:workout_id] = @workout.id
             redirect_to workout_path(@workout)
           else
             render :new
           end
-      else
-          redirect_to signin_path
-        end
+      #else
+        #  redirect_to new_user_session_path
+    #    end
     end
 
     def edit

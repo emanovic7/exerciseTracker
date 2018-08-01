@@ -1,0 +1,12 @@
+<div class="center">
+
+  <div class="info">
+
+    <ol type="1">
+      <% @workouts.all.each do |workout, i| %>
+        <li><%= link_to "#{workout.name}", workout_path(workout) %></li>
+        </br>
+      <% end %>
+    </ol>
+
+</div>
