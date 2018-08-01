@@ -1,10 +1,14 @@
 
 
+  <p><%= image_tag @user.avatar.url(:thumb) %></p>
+
+
+
 <div align="center">
 
   <div class="info">
 
-    <p><strong>Username:</strong> <%= @user.user_name %></p>
+    <p><strong>Username:</strong> <%= @user.email %></p>
 
         <% if @user.workouts.count == 0 %>
           <p>You have no workouts planned this week.
