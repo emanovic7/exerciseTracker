@@ -16,14 +16,16 @@ class ExercisesController < ApplicationController
 
   def create
     @exercise = Exercise.new(exercise_params)
-      if @exercise.save
+    respond_to do |format|
+       @exercise.save
         session[:exercise_id] = @exercise.id
       #  @exercise.workout = @workout
 
-        redirect_to exercise_path(@exercise)
-      else
-        render :new
-      end
+         format.html {redirect_to @exercise}
+      # else
+      #   render :new
+      # end
+    end
   end
 
   def edit

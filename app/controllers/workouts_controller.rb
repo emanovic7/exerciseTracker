@@ -1,9 +1,6 @@
 class WorkoutsController < ApplicationController
   before_action :set_workout, only: [:show, :edit, :update, :destroy]
 
-    def show
-      @workout = Workout.find(params[:id])
-    end
 
     def index
       @workouts = Workout.all
@@ -14,15 +11,17 @@ class WorkoutsController < ApplicationController
     end
 
     def create
-        @workout = Workout.new(workout_params)
-          if @workout.save
-            session[:workout_id] = @workout.id
-
-            redirect_to workout_path(@workout)
-          else
-            render :new
-          end
+      @workout = Workout.new(workout_params)
+      @workout.user =user.id
+      respond_to do |format|
+         @workout.save
+          format.html { redirect_to @workout, notice: 'Workout was successfully created.' }
+        # else
+        # format.html { render :new }
+        # end
+      end
     end
+
 
     def edit
 
