@@ -1,0 +1,43 @@
+
+
+
+<div align="center">
+  <%= form_for @exercise do |e| %>
+
+    <div>
+      <%= e.label :name, "Exercise Name" %>
+      <%= e.text_field :name %>
+    </div>
+      </br>
+
+    <div>
+      <%= e.label :description, "What is it for?" %>
+      <%= e.text_area :description %>
+    </div>
+      </br>
+
+    <div>
+      <%= e.label :sets, "Add umber of Sets" %>
+      <%= e.number_field :sets %>
+    </div>
+      </br>
+
+    <div>
+      <%= e.label :reps, "Add Number of Reps" %>
+      <%= e.number_field :reps %>
+    </div>
+      </br>
+
+    <div>
+      <%= e.label :rest, "Add Rest Period in Seconds" %>
+      <%= e.number_field :rest %>
+    </div>
+      </br>
+
+    <div>
+      <%= e.submit %>
+    </div>
+
+</div>
+
+<%end%>

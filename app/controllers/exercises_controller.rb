@@ -18,7 +18,8 @@ class ExercisesController < ApplicationController
     @exercise = Exercise.new(exercise_params)
       if @exercise.save
         session[:exercise_id] = @exercise.id
-        
+      #  @exercise.workout = @workout
+
         redirect_to exercise_path(@exercise)
       else
         render :new

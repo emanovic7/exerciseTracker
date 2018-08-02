@@ -6,17 +6,18 @@ class WorkoutsController < ApplicationController
     end
 
     def index
-        @workouts = Workout.all
+      @workouts = Workout.all
     end
 
     def new
-        @exercise =Exercise.new
+      @workout = Workout.new
     end
 
     def create
         @workout = Workout.new(workout_params)
           if @workout.save
             session[:workout_id] = @workout.id
+
             redirect_to workout_path(@workout)
           else
             render :new
