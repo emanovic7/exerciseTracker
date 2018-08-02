@@ -10,11 +10,7 @@ class ExercisesController < ApplicationController
   end
 
   def new
-    if logged_in? && @user = current_user
       @exercise = Exercise.new
-    else
-      redirect_to signin_path
-    end
   end
 
 
@@ -22,6 +18,7 @@ class ExercisesController < ApplicationController
     @exercise = Exercise.new(exercise_params)
       if @exercise.save
         session[:exercise_id] = @exercise.id
+        
         redirect_to exercise_path(@exercise)
       else
         render :new

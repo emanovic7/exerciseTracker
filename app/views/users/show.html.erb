@@ -1,25 +1,22 @@
 
 
-  <p><%= image_tag @user.avatar.url(:thumb) %></p>
 
-
-
-<div align="center">
+<div align="left">
 
   <div class="info">
 
-    <p><strong>Username:</strong> <%= @user.email %></p>
+    <p><strong>Name:</strong> <%= @user.first_name %>  <%= @user.last_name %></p>
 
         <% if @user.workouts.count == 0 %>
           <p>You have no workouts planned this week.
           <%= link_to "Add Workout", :controller => 'workouts', :action => 'new' %> </p>
         <% else %>
-        <p><strong>Workouts This week:</strong> <%= @user.workouts.count %></p>
-        <p>You have <%= link_to 'Workouts', workouts_path %> this week</p>
+        <p><strong>Workouts This week:</strong> <%= link_to "#{ @user.workouts.count }", workouts_path %>
         <p><strong>Exercises:</strong>  <%= @user.exercises.count %></p>
-        <% end %>
 
-    <p><%= link_to 'Edit', edit_user_path(@user) %></p>
+        <% end %>
+    <%= link_to "New Workout", :controller => 'workouts', :action => 'new' %> </p>
+    <p><%= link_to 'Edit User', edit_user_path(@user) %></p>
 
   </div>
 </div>

@@ -6,34 +6,21 @@ class WorkoutsController < ApplicationController
     end
 
     def index
-      #if @user == current_user
         @workouts = Workout.all
-      #else
-      #  redirect_to new_user_session_path
-    #  end
     end
 
     def new
-      #if logged_in? && @user = current_user
-        @workout = Workout.new
-      #else
-        #redirect_to new_user_session_path
-      #end
+        @exercise =Exercise.new
     end
 
     def create
-      #if @user = current_user
         @workout = Workout.new(workout_params)
-        #@workout.user = current_user
           if @workout.save
             session[:workout_id] = @workout.id
             redirect_to workout_path(@workout)
           else
             render :new
           end
-      #else
-        #  redirect_to new_user_session_path
-    #    end
     end
 
     def edit

@@ -1,17 +1,21 @@
 class ApplicationController < ActionController::Base
 
-  protect_from_forgery
-  before_action :configure_permitted_parameters, if: :devise_controller?
-
-  def after_sign_in_path_for(resource)
-      upload_path
-  end
-
-  protected
-
-  def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:user) << :image
-  end
-
+  # protect_from_forgery with: :exception
+  # before_action :current_user
+  # before_action :require_logged_in, except: [:new, :create, :home]
+  #
+  # def logged_in?
+  #   !!current_user
+  # end
+  #
+  # private
+  #   def require_logged_in
+  #     redirect_to root_path unless logged_in?
+  #   end
+  #
+  #   def current_user
+  #     @current_user ||= User.find(session[:user_id]) if session[:user_id]
+  #   end
+  #   helper_method :current_user
 
 end
