@@ -1,20 +1,16 @@
 
-<div align="center">
-  <h1><%= "exerciseTracker" %></h1>
-  <p><%= "Welcome to the ultimate Exercise Tracking Web App!"%></p>
-  <p><%= "Sign in or Register below!" %></p>
-</div>
+<div class="theme-showcase" role="main">
 
-<br></br>
+  <div class="left-pic" align="center">
+    <%= image_tag("workout.jpg", :alt => "workout feed", :size=> "700X300") %>
+  </div>
 
+  <div class="right-info" align="center">
+    <h1>Welcome to exerciseTracker!</h1>
+    <div class="center">
+      <!-- <%= link_to "Sign In", new_user_session_path, class: "btn btn-primary" %>
+      <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-primary" %> -->
+    </div>
+  </div>
 
-<div align="center">
-<% if user_signed_in? %>
- <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
-  <li><%= link_to "Edit User", edit_user_registration_path %></li>
-  
-<% else %>
- <li><%= link_to "Sign Up", new_user_registration_path %></li>
- <li><%= link_to "Login", new_user_session_path %></li>
-<% end %>
 </div>
