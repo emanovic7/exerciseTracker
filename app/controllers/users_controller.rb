@@ -50,7 +50,7 @@ class UsersController < ApplicationController
       :password)
     end
 
-    alias_method :devise_current_user, :current_user
+    
       def require_logged_in
         redirect_to root_path unless logged_in?
       end
