@@ -1,4 +1,4 @@
-<%= form_for @user do |f| %>
+<%= form_for @user, html: { multipart: true } do |f| %>
 
     <div class="">
      <%= f.label :user_name %>
@@ -16,6 +16,11 @@
      <%= f.label :password %>
       <br>
      <%= f.password_field :password %>
+
+     <div class="">
+       <%= f.label :avatar %>
+       <br>
+       <%= f.file_field :avatar %><br>
     </div>
 
     <div class="">
