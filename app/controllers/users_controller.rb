@@ -42,15 +42,17 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      params.require(:user_name).permit(
+      params.require(:user).permit(
+      :user_name,
       :first_name,
       :last_name,
       :avatar,
       :email,
-      :password)
+      :password
+      )
     end
 
-    
+
       def require_logged_in
         redirect_to root_path unless logged_in?
       end
