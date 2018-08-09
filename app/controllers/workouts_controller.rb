@@ -11,14 +11,15 @@ class WorkoutsController < ApplicationController
     end
 
     def create
-      @workout = Workout.new(workout_params)
-      @workout.user =user.id
-      respond_to do |format|
-         @workout.save
+    respond_to do |format|
+      if logged_in?
+        @workout = current_user.workouts.build(workout_params)
+        #@workout.user =user.id
+        @workout.save
           format.html { redirect_to @workout, notice: 'Workout was successfully created.' }
-        # else
-        # format.html { render :new }
-        # end
+      else
+          format.html { redirect_to root_url }
+          end
       end
     end
 

@@ -31,10 +31,25 @@ class UsersController < ApplicationController
     end
   end
 
+  def update
+    respond_to do |format|
+      if logged_in?
+        @user = User.create(user_params)
+        @user.save
+        format.html { redirect_to user_path(@user) }
+      else
+        format.html { render root_url }
+      end
+    end
+  end
+
+
   def destroy
     session[:user_id] = nil
     redirect_to root_url
   end
+
+
 
 
   private
