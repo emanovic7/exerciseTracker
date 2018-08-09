@@ -3,12 +3,16 @@
   <div class="info">
 
     <ol type="1">
-      <% @workouts.all.each do |workout, i| %>
+      <% current_user.workouts.all.each do |workout, i| %>
         <li><%= link_to "#{workout.name}", workout_path(workout) %></li>
         </br>
       <% end %>
     </ol>
 
-    <p>Add <%= link_to "Workout", new_workout_path %></p>
-
 </div>
+
+  <div>
+    <% if current_user %>
+      <p>Add <%= link_to "Workout", new_workout_path %></p>
+    <%end%>
+  </div>

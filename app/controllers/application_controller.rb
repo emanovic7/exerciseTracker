@@ -16,5 +16,8 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
 
+  def current_workout
+    @current_workout ||= Workout.find(session[:workout_id]) if session[:workout_id]
+  end
 
 end

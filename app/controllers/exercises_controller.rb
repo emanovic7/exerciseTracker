@@ -1,6 +1,7 @@
 class ExercisesController < ApplicationController
   before_action :set_exercise, only: [:show, :edit, :update, :destroy]
 
+
    def index
      @exercises = Exercise.all
    end
@@ -15,18 +16,20 @@ class ExercisesController < ApplicationController
 
 
   def create
-    @exercise = Exercise.new(exercise_params)
     respond_to do |format|
-       @exercise.save
+     if logged_in?
+       current_workout = current_user.workouts.find(params[:id])
+        @exercise = current_workout.exercises.build(exercise_params)
+        @exercise.save
         session[:exercise_id] = @exercise.id
-      #  @exercise.workout = @workout
 
-         format.html {redirect_to @exercise}
-      # else
-      #   render :new
-      # end
+        format.html { redirect_to workout_path(current_workout) }
+      else
+        format.html { render :new }
+      end
     end
   end
+
 
   def edit
 
@@ -50,6 +53,11 @@ private
   def set_exercise
     @exercise = Exercise.find(params[:id])
   end
+
+  def set_workout
+    @workout = current_workout
+  end
+
 
   def exercise_params
     params.require(:exercise).permit(

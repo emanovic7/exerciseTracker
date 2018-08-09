@@ -1,0 +1,36 @@
+
+
+<div align="center">
+  <%= form_for @workout do |f| %>
+
+    <div>
+      <%= f.label :name, "Workout Name" %>
+      <%= f.text_field :name %>
+    </div>
+      </br>
+
+    <div>
+      <%= f.label :body_part, "Add Body Part" %>
+      <%= f.text_field :body_part %>
+    </div>
+      </br>
+
+    <div>
+      <%= f.label :description, "Describe Workout" %>
+      <%= f.text_area :description %>
+    </div>
+      </br>
+
+    <div>
+      <%= link_to "Add Exercise", :controller => 'exercises', :action => 'new' %>
+    </div>
+      </br>
+
+    <div>
+      <%= f.submit %>
+    </div>
+
+</div>
+
+
+<%end%>

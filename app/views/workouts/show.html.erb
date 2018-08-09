@@ -1,15 +1,35 @@
-Workout: </br>
-<%= @workout.name %>
+<div align="center">
 
-<br></br>
-For: </br>
-<%= @workout.body_part %>
+  <strong>Workout:</strong>
+  <%= @workout.name %>
 
-<br></br>
-Description: </br>
-<%= @workout.description %>
+  <br></br>
+  <strong>Body Part:</strong>
+  <%= @workout.body_part %>
 
-<br></br>
-<%= link_to "Edit Workout", edit_workout_path(@workout)%>
-<br></br>
-<%= link_to "Back", workouts_path %>
+  <br></br>
+  <strong>Description:</strong>
+  <%= @workout.description %>
+
+  <br></br>
+  <strong>Exercises:</strong></br>
+    <% if @workout.exercises.all.count == 0 %>
+    There are no exercises yet, 
+      <%= link_to "Add Exercises", new_exercise_path %>
+    <% else %>
+    <ol>
+      <% @workout.exercises.all.each do |exercise, i| %>
+          <li><%= link_to "#{exercise.name}", exercise_path(exercise)%><li>
+            <br>
+        <% end %>
+    </ol>
+    <% end %>
+
+  <br></br>
+  <%= link_to "Edit Workout", edit_workout_path(@workout)%>
+  <br></br>
+  <%= link_to "Back", workouts_path %>
+
+
+
+</div>

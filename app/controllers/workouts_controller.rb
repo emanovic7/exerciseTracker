@@ -4,6 +4,7 @@ class WorkoutsController < ApplicationController
 
     def index
       @workouts = Workout.all
+
     end
 
     def new
@@ -14,8 +15,8 @@ class WorkoutsController < ApplicationController
     respond_to do |format|
       if logged_in?
         @workout = current_user.workouts.build(workout_params)
-        #@workout.user =user.id
         @workout.save
+        session[:workout_id] =@workout.id
           format.html { redirect_to @workout, notice: 'Workout was successfully created.' }
       else
           format.html { redirect_to root_url }
