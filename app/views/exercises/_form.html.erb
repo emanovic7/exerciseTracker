@@ -4,17 +4,15 @@
 <div align="center">
   <%= form_for @exercise do |e| %>
 
+   <%= e.hidden_field :workout_id %>
+   <%= e.hidden_field :user_id %>
+
     <div>
       <%= e.label :name, "Exercise Name" %>
       <%= e.text_field :name %>
     </div>
       </br>
 
-    <div>
-      <%= e.label :description, "What is it for?" %>
-      <%= e.text_area :description %>
-    </div>
-      </br>
 
     <div>
       <%= e.label :sets, "Add umber of Sets" %>

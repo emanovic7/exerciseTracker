@@ -3,16 +3,18 @@
   <div class="info">
 
     <ol type="1">
-      <% current_user.workouts.all.each do |workout, i| %>
-        <li><%= link_to "#{workout.name}", workout_path(workout) %></li>
-        </br>
+      <% if current_user.workouts.count == 0%>
+        <p>You currently have no workouts, add <%= link_to "Workout", new_workout_path %></p>
+      <% else %>
+        <% current_user.workouts.all.each do |workout, i| %>
+          <li><%= link_to "#{workout.name}", workout_path(workout) %></li>
+          </br>
+          <% end %>
       <% end %>
     </ol>
 
-</div>
-
-  <div>
-    <% if current_user %>
-      <p>Add <%= link_to "Workout", new_workout_path %></p>
+    <% if current_user.workouts.count !=0 %>
+      <p>Add More <%= link_to "Workouts", new_workout_path %></p>
     <%end%>
-  </div>
+
+</div>

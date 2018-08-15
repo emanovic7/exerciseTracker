@@ -1,5 +1,7 @@
+
 class ExercisesController < ApplicationController
   before_action :set_exercise, only: [:show, :edit, :update, :destroy]
+
 
 
    def index
@@ -11,21 +13,21 @@ class ExercisesController < ApplicationController
   end
 
   def new
-      @exercise = Exercise.new
+    @exercise = Exercise.new(workout_id: params[:workout_id], user_id: params[:user_id])
   end
 
 
   def create
     respond_to do |format|
-     if logged_in?
-       current_workout = current_user.workouts.find(params[:id])
+      if current_workout.id == @workout.id
         @exercise = current_workout.exercises.build(exercise_params)
+        binding.pry
         @exercise.save
-        session[:exercise_id] = @exercise.id
 
-        format.html { redirect_to workout_path(current_workout) }
+        session[:exercise_id] = @exercise.id
+        format.html { redirect_to current_workout }
       else
-        format.html { render :new }
+        format.html{ redirect_to workouts_path }
       end
     end
   end
@@ -55,7 +57,7 @@ private
   end
 
   def set_workout
-    @workout = current_workout
+    @workout = Workout.find(params[:id])
   end
 
 
@@ -65,7 +67,9 @@ private
     :description,
     :sets,
     :reps,
-    :rest
+    :rest,
+    :workout_id,
+    :user_id
     )
   end
 

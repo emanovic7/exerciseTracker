@@ -3,6 +3,8 @@
 <div align="center">
   <%= form_for @workout do |f| %>
 
+  <%= f.hidden_field :user_id %>
+
     <div>
       <%= f.label :name, "Workout Name" %>
       <%= f.text_field :name %>

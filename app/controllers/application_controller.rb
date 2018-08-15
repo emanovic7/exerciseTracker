@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   before_action :current_user
   before_action :require_logged_in, except: [:new, :create, :home]
-  helper_method :current_user
+  helper_method :current_user, :current_workout
 
   def logged_in?
     !!current_user
@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_workout
-    @current_workout ||= Workout.find(session[:workout_id]) if session[:workout_id]
+    @current_workout = current_user.workouts.find(session[:workout_id]) if session[:workout_id]
   end
 
 end

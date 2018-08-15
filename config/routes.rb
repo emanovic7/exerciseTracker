@@ -9,9 +9,16 @@ Rails.application.routes.draw do
   post "/sessions/create", to: "sessions#create"
   delete "/signout", to: "sessions#destroy"
 
-  resources :users
+  resources :users do
+      resources :workouts, only: [:show, :index, :new]
+  end
+
+  resources :workouts do
+    resources :exercises, only: [:show, :index, :new]
+  end
+
   resources :exercises
-  resources :workouts
+
 
 
 end
