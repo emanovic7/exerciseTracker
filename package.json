@@ -1,5 +1,7 @@
 {
   "name": "exerciseTracker",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "react": "^16.4.2"
+  }
 }
