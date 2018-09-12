@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery
+  protect_from_forgery with: :null_session
   before_action :current_user
   before_action :require_logged_in, except: [:new, :create, :home]
   helper_method :current_user, :current_workout
