@@ -1,15 +1,17 @@
 
-class ExercisesController < ApplicationController
+class Api::V1::ExercisesController < ApplicationController
   before_action :set_exercise, only: [:show, :edit, :update, :destroy]
 
 
 
    def index
-     @exercises = Exercise.all
+     #@exercises = Exercise.all
+     render json: Exercise.all
    end
 
   def show
-    @exercise = Exercise.find(params[:id])
+    #@exercise = Exercise.find(params[:id])
+    render json: Exercise.find(params[:id])
   end
 
   def new
@@ -17,19 +19,24 @@ class ExercisesController < ApplicationController
   end
 
 
-  def create
-    respond_to do |format|
-      if current_workout.id == @workout.id
-        @exercise = current_workout.exercises.build(exercise_params)
-        binding.pry
-        @exercise.save
+  # def create
+  #   respond_to do |format|
+  #     if current_workout.id == @workout.id
+  #       @exercise = current_workout.exercises.build(exercise_params)
+  #       binding.pry
+  #       @exercise.save
+  #
+  #       session[:exercise_id] = @exercise.id
+  #       format.html { redirect_to current_workout }
+  #     else
+  #       format.html{ redirect_to workouts_path }
+  #     end
+  #   end
+  # end
 
-        session[:exercise_id] = @exercise.id
-        format.html { redirect_to current_workout }
-      else
-        format.html{ redirect_to workouts_path }
-      end
-    end
+  def create
+    exercise = Exercise.create(exercise_params)
+    render json: exercise
   end
 
 
@@ -37,16 +44,23 @@ class ExercisesController < ApplicationController
 
   end
 
+  # def update
+  #   if @exercise.update(exercise_params)
+  #     redirect_to exercise_path(@exercise)
+  #   else
+  #     render :edit
+  #   end
+  # end
+
   def update
-    if @exercise.update(exercise_params)
-      redirect_to exercise_path(@exercise)
-    else
-      render :edit
-    end
+    exercise = Exercise.find(params[:id])
+    exercise.update_attributes(exercise_params)
+    render json: exercise
   end
 
   def destroy
-    @exercise.delete
+    #@exercise.delete
+    Exercise.destroy(params[:id])
   end
 
 
